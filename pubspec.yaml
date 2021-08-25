@@ -1,0 +1,25 @@
+name: weather
+description: App displaying weather infomation from HKO
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  hko_weather: # HKO Weather Library
+    path: ./packages/hko_weather_provider
+  flutter_gherkin: ^2.0.0 # BDD Testing
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: Varela
+      fonts:
+        - asset: fonts/VarelaRound-Regular.ttf
