@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hko_weather/hko_weather.dart';
 import 'package:weather/themes.dart';
 import 'package:weather/widgets/location_app_bar.dart';
+import 'package:weather/widgets/weather_overview.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -14,7 +15,11 @@ class HomePage extends StatelessWidget {
             LocationAppBar(
               stationName: CurrentWeatherResponse.mock().stations.first.name,
             ),
-            // TODO: Overview
+            SizedBox(height: 20), // Spacing
+            WeatherOverview(
+              selectedStation: CurrentWeatherResponse.mock().stations.first,
+              generalInfo: ForecastResponse.mock().situation,
+            ),
             // TODO: Forecast List
           ],
         ),
