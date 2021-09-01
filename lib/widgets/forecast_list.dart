@@ -12,6 +12,50 @@ class ForecastList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(); // TODO: Forecast List
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Column(
+        children: [
+          for (final forecast in forecasts)
+            SizedBox(
+              height: 40,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      forecast.day,
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                  ),
+                  Image.network(
+                    forecast.status.getIconLink(),
+                    width: 40,
+                  ),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          forecast.maxTemp.value.toString(),
+                          style: Theme.of(context).textTheme.headline6?.copyWith(
+                                color: Theme.of(context).hotColor,
+                              ),
+                        ),
+                        SizedBox(width: 16),
+                        Text(
+                          forecast.maxTemp.value.toString(),
+                          style: Theme.of(context).textTheme.headline6?.copyWith(
+                                color: Theme.of(context).coldColor,
+                              ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hko_weather/hko_weather.dart';
 import 'package:weather/themes.dart';
+import 'package:weather/widgets/forecast_list.dart';
 import 'package:weather/widgets/location_app_bar.dart';
 import 'package:weather/widgets/weather_overview.dart';
 
@@ -20,7 +21,10 @@ class HomePage extends StatelessWidget {
               selectedStation: CurrentWeatherResponse.mock().stations.first,
               generalInfo: ForecastResponse.mock().situation,
             ),
-            // TODO: Forecast List
+            SizedBox(height: 40), // Spacing
+            ForecastList(
+              forecasts: ForecastResponse.mock().forecasts,
+            ),
           ],
         ),
       ),
