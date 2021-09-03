@@ -41,7 +41,11 @@ class _HomePageState extends State<HomePage> {
     final _currentWeather = await getCurrentWeather();
     setState(() {
       currentWeather = _currentWeather;
-      selectedStation = _currentWeather.stations.first;
+      // Set the selected station base on previously selected station name
+      // If previously nothing is selected, then select the first one
+      selectedStation = selectedStation != null ?
+        _currentWeather.stations.firstWhere((station) => station.name == selectedStation!.name) :
+        _currentWeather.stations.first;
     });
   }
 
@@ -50,6 +54,68 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       forecast = _forecast;
     });
+  }
+
+  void _showStationsPicker() {
+    showModalBottomSheet(
+      context: context,
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      isScrollControlled: true,
+      builder: (context) {
+        return DraggableScrollableSheet(
+          initialChildSize: 0.4,
+          minChildSize: 0.2,
+          maxChildSize: 0.9,
+          expand: false,
+          builder: (context, sc) {
+            return ListView(
+              controller: sc,
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  color: Theme.of(context).primaryColor,
+                  height: 40,
+                  child: Text(
+                    "Stations",
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
+                ),
+                for (final station
+                    in currentWeather?.stations ?? <WeatherStation>[])
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      setState(() {
+                        selectedStation = station;
+                      });
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom:
+                              BorderSide(color: Theme.of(context).dividerColor),
+                        ),
+                      ),
+                      alignment: Alignment.center,
+                      height: 40,
+                      child: Text(
+                        station.name,
+                        style: Theme.of(context).textTheme.subtitle1,
+                      ),
+                    ),
+                  ),
+              ],
+            );
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -78,8 +144,11 @@ class _HomePageState extends State<HomePage> {
     // We got data!
     return ListView(
       children: [
-        LocationAppBar(
-          stationName: _selectedStation.name,
+        GestureDetector(
+          onTap: _showStationsPicker,
+          child: LocationAppBar(
+            stationName: _selectedStation.name,
+          ),
         ),
         SizedBox(height: 20), // Spacing
         WeatherOverview(
