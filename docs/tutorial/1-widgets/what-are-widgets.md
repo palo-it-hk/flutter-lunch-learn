@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# What are widgets?
+# Concept: What are widgets?
 
 Everything you see inside a Flutter are widgets.
 
