@@ -79,4 +79,4 @@ Due to the nature of the HKO API, the general description returned in a `Forecas
 This is confusing for sure. We will mentioning this in future steps as well.
 :::
 
-We will get into them in details in [Step 2 - API Call and State Logic](/tutorial/2-api-call-and-state.md).
+We will get into them in details in [Step 2 - API Call and State Logic](/tutorial/2-api-call-and-state/step-2-api-call-and-state.md).

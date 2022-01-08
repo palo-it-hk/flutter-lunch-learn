@@ -305,7 +305,7 @@ Padding(
 ),
 ```
 
-:::tips
+:::tip
 There are convenient refactoring shortcuts to help you do this easier if you have installed the Flutter plugin in your editor:
 
 Android Studio: While placing your cursor inside the widget name (in this case `Text`), hit `Option + Return`
