@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hko_weather/hko_weather.dart';
 import 'package:weather/themes.dart';
+import 'package:weather/widgets/location_app_bar.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -7,11 +9,15 @@ class HomePage extends StatelessWidget {
     return Container(
       decoration: Theme.of(context).backgroundDecoration,
       child: Scaffold(
-        body: DemoStatefulWidget(),
-        // TODO: ListView
-        //// TODO: App Bar
-        //// TODO: Overview
-        //// TODO: Forecast List
+        body: ListView(
+          children: [
+            LocationAppBar(
+              stationName: CurrentWeatherResponse.mock().stations.first.name,
+            ),
+            // TODO: Overview
+            // TODO: Forecast List
+          ],
+        ),
       ),
     );
   }
