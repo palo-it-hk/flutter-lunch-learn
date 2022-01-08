@@ -7,6 +7,8 @@ sidebar_position: 1
 
 Welcome to the Flutter Lunch and Learn! Here we will be building a simple Weather app using the Flutter framework.
 
+This tutorial is expected to take around 1.5 to 2 hours.
+
 The objective of this tutorial is:
 - Learn Flutter concepts
 - Try Flutter hands on!
