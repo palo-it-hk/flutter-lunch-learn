@@ -251,7 +251,9 @@ Refer to the Figma design system for what text style and color to use
 
 :::caution
 The `!` after `headline6` is necessary.
-Since the text style `headline6` is **nullable**, the `!`
+Since the text style `headline6` is **nullable**, the `!` allows us to cast away the nullability and use the object as a non-nullable type.
+Of course, like any cast, using `!` comes with a loss of static safety. The cast must be checked at runtime to preserve soundness and it may fail and throw an exception.
+Read the [Understanding Null-Safety guide](https://dart.dev/null-safety/understanding-null-safety#null-assertion-operator) for more information.
 :::
 
 :::tip
@@ -311,6 +313,25 @@ VS Code: While placing your cursor inside the widget name (in this case `Text`),
 
 This will bring up the refacting menu. Then simply select `Wrap with Padding`, and change the necessary padding options.
 :::
+
+:::info
+You can also simply add a `SizedBox` as an empty widget that take up space as the padding between widgets, for example:
+```dart
+Icon(
+  Icons.place_rounded,
+  color: Theme.of(context).textTheme.headline6!.color,
+),
+SizedBox(
+  width: 8,
+),
+Text(
+  stationName,
+  style: Theme.of(context).textTheme.headline6,
+),
+```
+:::
+
+## Wrapping up
 
 Complete code:
 ```dart

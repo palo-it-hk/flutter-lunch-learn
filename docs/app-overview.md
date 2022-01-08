@@ -73,10 +73,10 @@ The detail of the responses are as follows:
   - The general description of weather
   - A list of `Forecast`
 
-:::caution
-Due to the nature of the HKO API, the general description returned in a `ForecastResponse` is actually the weather description of the current weather, and is what we will be displaying in the `WeatherOverview` widget.
+:::danger
+Due to the nature of the HKO API, the general description returned in a `ForecastResponse` is **actually the weather description of the current weather, and is what we will be displaying in the `WeatherOverview` widget**.
 
-This is a bit confusing for sure. We will mentioning this in future steps as well.
+This is confusing for sure. We will mentioning this in future steps as well.
 :::
 
 We will get into them in details in [Step 2 - API Call and State Logic](/tutorial/2-api-call-and-state.md).
